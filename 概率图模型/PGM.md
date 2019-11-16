@@ -380,3 +380,9 @@ $\phi_1(x, y_1) \prod\limits_{i=2}^n \phi(y_{i-1}, y_i) \phi(x, y_i) = \phi_1'(y
 
 # 变量消除
 
+
+
+
+
+
+
