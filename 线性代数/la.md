@@ -94,9 +94,79 @@ $A = \left(\begin{matrix}3&5&-4\\-3&-2&4\\6&1&-8\end{matrix}\right), b = \left(\
 
 $\left(\begin{matrix}3&5&-4&7\\-3&-2&4&-1\\6&1&-8&4\end{matrix}\right)$
 
+施以行变换，化为简化阶梯形
+
+$\left(\begin{matrix}1&0&-\frac{4}{3}&-1\\0&1&0&2\\0&0&0&0\end{matrix}\right)$
+
+$x_3$ 为自由变量，Ax = b的通解为
+
+$x = \left(\begin{matrix}-1\\2\\0\end{matrix}\right) + \left(\begin{matrix}\frac{4}{3}\\0\\1\end{matrix}\right)x_3$
+
 ![](./pic/1.5.2.png)
 
 ## 2 矩阵代数
+
+### 2.2 矩阵的逆
+
+![](./pic/2.2.1.png)
+
+![](./pic/2.2.2.png)
+
+**例2.2.2** ：求 $A = \left(\begin{matrix}3&4\\5&6\end{matrix}\right)$ 的逆。
+
+解：$det A = -2 \ne 0$ ，故A可逆，且
+
+$A^{-1} = -\frac{1}{2}\left(\begin{matrix}6&-4\\-5&3\end{matrix}\right) = \left(\begin{matrix}-3&2\\\frac{5}{2}&-\frac{3}{2}\end{matrix}\right)$ 
+
+![](./pic/2.2.3.png)
+
+**例2.2.4** ：解方程：
+
+$3x_1+4x_2=3\\5x_1+6x_2=7$
+
+解：
+
+方程可以写成矩阵的形式：
+
+ $Ax = \left(\begin{matrix}3&4\\5&6\end{matrix}\right)\left(\begin{matrix}x_1\\x_2\end{matrix}\right)=\left(\begin{matrix}3\\7\end{matrix}\right) = b$ 
+
+$x = A^{-1}b = \left(\begin{matrix}-3&2\\\frac{5}{2}&-\frac{3}{2}\end{matrix}\right)\left(\begin{matrix}3\\7\end{matrix}\right) = \left(\begin{matrix}5\\-3\end{matrix}\right)$ 
+
+![](./pic/2.2.4.png)
+
+![](./pic/2.2.5.png)
+
+![](./pic/2.2.6.png)
+
+#### 初等矩阵
+
+![](./pic/2.2.7.png)
+
+![](./pic/2.2.8.png)
+
+**例2.2.6**：求$E = \left(\begin{matrix}1&0&0\\0&1&0\\-4&0&1\end{matrix}\right)$ 的逆
+
+解：为把E变成I，需要对E施加的初等行变换为：将第1行的4倍加到第3行中去，其对应的初等矩阵即E的逆：
+
+$E^{-1} = \left(\begin{matrix}1&0&0\\0&1&0\\4&0&1\end{matrix}\right)$
+
+#### 求$A^{-1}$ 的算法 
+
+![](./pic/2.2.9.png)
+
+![](./pic/2.2.10.png)
+
+  **例2.2.7**：若矩阵 $ \left(\begin{matrix}0&1&2\\1&0&3\\4&-3&8\end{matrix}\right)$ 的逆存在的话，求其逆
+
+解： $ \left(\begin{matrix}A&I\end{matrix}\right) = \left(\begin{matrix}0&1&2&1&0&0\\1&0&3&0&1&0\\4&-3&8&0&0&1\end{matrix}\right) \sim \left(\begin{matrix}1&0&0&-9/2&7&-3/2\\0&1&0&-2&4&-1\\0&0&1&3/2&-2&1/2\end{matrix}\right)$
+
+根据定理7，因为$A \sim I$ 所以A可逆，且
+
+$A^{-1} = \left(\begin{matrix}-9/2&7&-3/2\\-2&4&-1\\3/2&-2&1/2\end{matrix}\right)$
+
+
+
+
 
 ## 3 行列式
 
@@ -270,6 +340,68 @@ $x = -2 \cdot \left(\begin{matrix}1 \\ 0\end{matrix}\right)+ 3 \cdot \left(\begi
 $\left(\begin{matrix}3&-1\\6&0\\2&1\end{matrix}\right) \left(\begin{matrix}c_1\\c_2\end{matrix}\right) = \left(\begin{matrix}3\\12\\7\end{matrix}\right)$
 
 写出增广矩阵，并施以行变换
+
+$\left(\begin{matrix}3&-1&3\\6&0&12\\2&1&7\end{matrix}\right) \sim \left(\begin{matrix}1&0&2\\0&1&3\\0&0&0\end{matrix}\right)$
+
+可以看出方程确实是相容的，并且
+
+$[x]_B = \left(\begin{matrix}2\\3\end{matrix}\right)$
+
+H是$R^3$中与$R^2$同构的平面，由B确定的H上的坐标系如下图所示：
+
+![](./pic/4.4.8.png)
+
+### 4.5 向量空间的维数
+
+### 4.6 秩
+
+### 4.7 基的变换
+
+![](./pic/4.7.1.png)
+
+![](./pic/4.7.2.png)
+
+**例4.7.1**：对一个向量空间V，考虑两个基$B=\{b_1, b_2\}, C=\{c_1, c_2\}$ ，满足
+
+$b_1 = 4c_1+c_2\\b_2=-6c_1+c_2$
+
+假设$x=3b_1+b_2$ ，也就是说$[x]_B=\left(\begin{matrix}3\\1\end{matrix}\right)$，求$[x]_C$
+
+解：$[x]_C = [3b_1+b_2]_C = 3[b_1]_C+[b_2]_C$
+
+$b_1 = 4c_1+c_2$ 给出了$[b_1]_C = \left(\begin{matrix}4\\1\end{matrix}\right)$
+
+$b_2=-6c_1+c_2$ 给出了$[b_2]_C = \left(\begin{matrix}-6\\1\end{matrix}\right)$
+
+因此$[x]_C = \left(\begin{matrix}4&-6\\1&1\end{matrix}\right)\left(\begin{matrix}3\\1\end{matrix}\right) = \left(\begin{matrix}6\\4\end{matrix}\right)$
+
+（其中 $\left(\begin{matrix}4&-6\\1&1\end{matrix}\right)$ 就是$P_{C\leftarrow B}$）
+
+#### $R^n$ 中的基变换
+
+![](./pic/4.7.3.png)
+
+![](./pic/4.7.4.png)
+
+![](./pic/4.7.5.png)
+
+![](./pic/4.7.6.png)
+
+（对大矩阵而言，第一种方法会更快）
+
+**例4.7.3**：设$b_1 = \left(\begin{matrix}1\\-3\end{matrix}\right), b_2 = \left(\begin{matrix}-2\\4\end{matrix}\right), c_1 = \left(\begin{matrix}-7\\9\end{matrix}\right), c_2 = \left(\begin{matrix}-5\\7\end{matrix}\right)$，考虑$R^2$ 中的基$B = \{b_1, b_2\}, C = \{c_1, c_2\}$ 
+
+a. 求C到B的坐标变换矩阵
+
+b. 求B到C的坐标变换矩阵
+
+解：
+
+a. $(b_1\ b_2 \mid c_1\ c_2)$
+
+### 4.8 差分方程中的应用
+
+### 4.9 马尔可夫链中的应用
 
 ## 5 特征值与特征向量
 
