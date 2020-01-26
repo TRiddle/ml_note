@@ -570,13 +570,13 @@ $Av_1 = \lambda_1v_1, \dots, Av_n = \lambda_nv_n$
 
 **例5.4.1**：设$B = \{b_1, b_2\}$ 是V的基，$C = \{c_1, c_2, c_3\}$ 是W的基。T是$V \rightarrow W$ 的线性变换，$T(b_1) = 3c_1-2c_2+5c_3, T(b_2)=4c_1+7c_2-c_3$。求T相对于基B和C的矩阵M。
 
-解：$M = \left(\begin{matrix}[T(b_1)_c] & [T(b_2)]_c\end{matrix}\right) = \left(\begin{matrix}3&4\\-2&7\\5&-1\end{matrix}\right)$
+解：$M = \left(\begin{matrix}[T(b_1)]_C & [T(b_2)]_C\end{matrix}\right) = \left(\begin{matrix}3&4\\-2&7\\5&-1\end{matrix}\right)$
 
 #### V到V的线性变换
 
 ![](./pic/5.4.4.png)
 
-**例5.4.2**：$P_2\rightarrow P_2$ 的映射T：$T(a_0, a_1t+a_2t^2)=a_1+2a_2t$ 是线性变换（微分算子）
+**例5.4.2**：$P_2\rightarrow P_2$ 的映射T：$T(a_0+a_1t+a_2t^2)=a_1+2a_2t$ 是线性变换（微分算子）
 
 a. 当基$B = \{1, t, t^2\}$ 时，求T的B-矩阵
 
@@ -584,9 +584,147 @@ b. 对$P_2$ 中的每个p，验证$[T(p)]_B = [T]_B[P]_B$
 
 解：
 
-a.  
+a. $[T]_B = \left(\begin{matrix}[T(b_1)]_B&[T(b_2)]_B&[T(b_3)_B]\end{matrix}\right) = \left(\begin{matrix}0&1&0\\0&0&2\\0&0&0\end{matrix}\right)$
+
+b. 不妨设一般的多项式为$p(t)=a_0+a_1t+a_2t^2$，则$[T(p)]_B = [a_1+2a_2t] =  \left(\begin{matrix}a_1\\2a_2\\0\end{matrix}\right) = \left(\begin{matrix}0&1&0\\0&0&2\\0&0&0\end{matrix}\right)\left(\begin{matrix}a_0\\a_1\\a_2\end{matrix}\right) = [T]_B[p]_B$
+
+![](./pic/5.4.5.png)
+
+#### $R^n$ 上的线性变换
+
+![](./pic/5.4.6.png)
+
+**例5.4.3**：设$A = \left(\begin{matrix}7&2\\-4&1\end{matrix}\right)$ ，$R^2\rightarrow R^2$ 的变换$T:T(x)=Ax$。求$R^2$ 的一个基B，使得T的B-矩阵是对角矩阵
+
+解：将矩阵A对角化$A=PDP^{-1}$，可得$P = \left(\begin{matrix}1&1\\-1&2\end{matrix}\right), D =\left(\begin{matrix}5&0\\0&3\end{matrix}\right)$，根据定理8，P的列向量就是所求的基
+
+#### 矩阵表示的相似性
+
+![](./pic/5.4.7.png)
+
+![](./pic/5.4.8.png)
+
+**例5.4.4**：设$A = \left(\begin{matrix}4&-9\\4&8\end{matrix}\right), b_1 = \left(\begin{matrix}3\\2\end{matrix}\right), b_2 = \left(\begin{matrix}2\\1\end{matrix}\right)$ ，A的特征多项式是$(\lambda + 2)^2$ ，但特征值-2的特征空间只是一维的，因此A是不可以对角化的。但是基$B = \{b_1, b_2\}$ 能够使得变换$x \mapsto Ax$ 的B-矩阵是三角矩阵，求A的B-矩阵。
+
+解：直接利用定理8的推广求A的B-矩阵：
+
+$P = \left(\begin{matrix}b_1&b_2\end{matrix}\right) = \left(\begin{matrix}3&2\\2&1\end{matrix}\right), P^{-1} = \frac{1}{-1}\left(\begin{matrix}1&-2\\-2&3\end{matrix}\right) = \left(\begin{matrix}-1&2\\2&-3\end{matrix}\right)$
+
+$[T]_B = P^{-1}AP = \left(\begin{matrix}-2&1\\0&-2\end{matrix}\right)$
+
+### 5.5 复特征值
+
+### 5.6 离散动力系统
+
+### 5.7 微分方程中的应用
+
+### 5.8 特征值的迭代估计
 
 ## 6 正交性和最小二乘法
 
+### 6.1 内积，长度和正交性
+
+#### 内积
+
+![](./pic/6.1.1.png)
+
+![](./pic/6.1.2.png)
+
+#### 向量的长度
+
+![](./pic/6.1.3.png)
+
+![](./pic/6.1.4.png)
+
+#### $R^n$ 空间中的距离
+
+![](./pic/6.1.5.png)
+
+#### 正交向量
+
+![](./pic/6.1.6.png)
+
+![](./pic/6.1.7.png)
+
+#### $R^2$ 空间和$R^3$ 空间的角度
+
+![](./pic/6.1.8.png)
+
+![](./pic/6.1.9.png)
+
+### 6.2 正交集
+
+![](./pic/6.2.1.png)
+
+![](./pic/6.2.2.png)
+
+![](./pic/6.2.3.png)
+
+![](./pic/6.2.4.png)
+
+**例6.2.2**：$u_1 = \left(\begin{matrix}3\\1\\1\end{matrix}\right), u_2 = \left(\begin{matrix}-1\\2\\1\end{matrix}\right), u_3 = \left(\begin{matrix}-1/2\\-2\\7/2\end{matrix}\right)$，$S = \{u_1, u_2, u_3\}$ 是$R^3$ 中的一个正交基，将向量$y = \left(\begin{matrix}6\\1\\-8\end{matrix}\right)$ 表示称S中向量的线性组合
+
+解：$c_1 = \frac{y\cdot u_1}{u_1\cdot u_1} = 1, c_2 = \frac{y\cdot u_2}{u_2\cdot u_2} = -2, c_3 = \frac{y\cdot u_3}{u_3\cdot u_3} = -2$，根据定理5有$y = u_1-2u_2-2u_3$
+
+#### 正交投影
+
+![](./pic/6.2.5.png)
+
+**例6.2.2**：假设$y = \left(\begin{matrix}7\\6\end{matrix}\right), u = \left(\begin{matrix}4\\2\end{matrix}\right)$，找出y在u上的正交投影，然后将y写成两个正交向量之和，一个在 $Span\{u\}$ 中，另一个与u正交。并且计算y到u所在直线的距离。
+
+解：y在u上的正交投影是
+
+$\hat{y} = \frac{y\cdot u}{u\cdot u} \cdot u =\left(\begin{matrix}8\\4\end{matrix}\right)$ 
+
+y垂直于u的分量为
+
+$z = y - \hat{y} =\left(\begin{matrix}-1\\2\end{matrix}\right)$
+
+y到u所在直线的距离为
+
+$||z|| = \sqrt{5}$ 
+
+#### 单位正交集
+
+![](./pic/6.2.6.png)
+
+![](./pic/6.2.7.png)
+
+![](./pic/6.2.8.png)
+
+![](./pic/6.2.9.png)
+
+**例6.2.6**：若$U = \left(\begin{matrix}1/\sqrt2&2/3\\1/\sqrt2&-2/3\\0&1/3\end{matrix}\right), x = \left(\begin{matrix}\sqrt2\\3\end{matrix}\right)$，注意到U具有单位正交列，且$U^TU=I$ ，验证$\|Ux\|=\|x\|$
+
+解：$Ux = \left(\begin{matrix}3\\-1\\1\end{matrix}\right), \|Ux\| = \sqrt{(Ux)\cdot(Ux)}=\sqrt{11}, \|x\| = \sqrt{x\cdot x}=\sqrt{11}$，故$\|Ux\|=\|x\|$
+
+### 6.3 正交投影
+
+### 6.4 格拉姆-施密特方法
+
+### 6.5 最小二乘问题
+
+### 6.6 线形模型中的应用
+
 ## 7 对称矩阵和二次型
+
+### 7.1 对称矩阵的对角化
+
+![](./pic/7.1.1.png)
+
+![](./pic/7.1.2.png)
+
+![](./pic/7.1.3.png)
+
+**例7.1.3**：$A = \left(\begin{matrix}3&-2&4\\-2&6&2\\4&2&3\end{matrix}\right)$ 的特征方程为$0=-(\lambda-7)^2(\lambda+2)$ ，将其正交对角化。
+
+解：根据特征方程可得特征值：$\lambda_1=7, \lambda_2=-2$
+
+解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right)$
+
+#### 谱定理
+
+#### 谱分解
+
+
 
