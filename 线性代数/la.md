@@ -1,3 +1,5 @@
+[toc]
+
 ## 1 线形方程组
 
 ### 1.1 线性方程组
@@ -164,9 +166,9 @@ $E^{-1} = \left(\begin{matrix}1&0&0\\0&1&0\\4&0&1\end{matrix}\right)$
 
 $A^{-1} = \left(\begin{matrix}-9/2&7&-3/2\\-2&4&-1\\3/2&-2&1/2\end{matrix}\right)$
 
+#### 逆矩阵的另一个观点
 
-
-
+![](./pic/2.2.11.png)
 
 ## 3 行列式
 
@@ -333,6 +335,8 @@ $x = -2 \cdot \left(\begin{matrix}1 \\ 0\end{matrix}\right)+ 3 \cdot \left(\begi
 
 ![](./pic/4.4.7.png)
 
+![](./pic/4.4.9.png)
+
 **例4.4.7**：令$v_1 = \left(\begin{matrix}3\\6\\2\end{matrix}\right), v_2 = \left(\begin{matrix}-1\\0\\1\end{matrix}\right), x = \left(\begin{matrix}3\\12\\7\end{matrix}\right), B = \{v_1, v_2\}$ ，则B是$H = Span\{v_1, v_2\}$ 的一个基，判定x是否在H中。若在，求x相对于B的坐标向量。
 
 解：若x在H中，则下列方程是相容的，并且其解就是x的B-坐标：
@@ -397,13 +401,190 @@ b. 求B到C的坐标变换矩阵
 
 解：
 
-a. $(b_1\ b_2 \mid c_1\ c_2)$
+a. 由$\left(\begin{matrix}b_1&b_2&c_1&c_2\end{matrix}\right) = \left(\begin{matrix}1&-2&7&5\\-3&4&9&7\end{matrix}\right) \sim \left(\begin{matrix}1&0&5&3\\0&1&6&4\end{matrix}\right)$ 得$P_{B\leftarrow C} = \left(\begin{matrix}5&3\\6&4\end{matrix}\right)$
+
+b. 因为坐标变换矩阵一定是可逆的，所以$P_{C\leftarrow B} = P^{-1}_{B\leftarrow C} = \frac{1}{2}\left(\begin{matrix}4&-3\\-6&5\end{matrix}\right)= \left(\begin{matrix}2&-3/2\\-3&5/2\end{matrix}\right)$
 
 ### 4.8 差分方程中的应用
 
 ### 4.9 马尔可夫链中的应用
 
 ## 5 特征值与特征向量
+
+### 5.1 特征向量与特征值
+
+![](./pic/5.1.1.png)
+
+**例5.1.3**：证明7是矩阵$A = \left(\begin{matrix}1&6\\5&2\end{matrix}\right)$ 的特征值，并求特征值7对应的特征向量
+
+解：7是A的特征值当且仅当Ax=7x有非平凡解，方程移项得
+
+$(A-7I)x=0$
+
+$(A-7I) = \left(\begin{matrix}-6&6\\5&-5\end{matrix}\right)$ 列线性相关，故方程有非平凡解
+
+对增广矩阵施以行变换
+
+$\left(\begin{matrix}-6&6&0\\5&-5&0\end{matrix}\right) \sim \left(\begin{matrix}1&-1&0\\0&0&0\end{matrix}\right)$
+
+得到通解$x = x_2\left(\begin{matrix}1\\1\end{matrix}\right)$，凡是$x_2 \ne 0$ 的具有这种形式的向量都是特征值7对应的特征向量
+
+![](./pic/5.1.2.png)
+
+![](./pic/5.1.3.png)
+
+**例5.1.4**：设 $A = \left(\begin{matrix}4&-1&6\\2&1&6\\2&-1&8\end{matrix}\right)$ ，A的一个特征值是2，求对应的特征空间的一个基
+
+解：A - 2I的零空间就是特征值2对应的特征空间，对A-2I做行变换得
+
+$A-2I = \left(\begin{matrix}2&-1&6\\2&-1&6\\2&-1&6\end{matrix}\right)\sim\left(\begin{matrix}2&-1&6\\0&0&0\\0&0&0\end{matrix}\right)$
+
+所以其通解为
+
+$x = x_2\left(\begin{matrix}1/2\\1\\0\end{matrix}\right) + x_3\left(\begin{matrix}-3\\0\\1\end{matrix}\right)$， $x_2$和$x_3$ 为任意值
+
+故特征值2对应的特征空间的基为
+
+$\left\{\left(\begin{matrix}1/2\\1\\0\end{matrix}\right),\left(\begin{matrix}-3\\0\\1\end{matrix}\right)\right\}$
+
+![](./pic/5.1.4.png)
+
+ ![](./pic/5.1.5.png)
+
+![](./pic/5.1.6.png)
+
+### 5.2 特征方程
+
+**例5.2.1**：求$A = \left(\begin{matrix}2&3\\3&-6\end{matrix}\right)$的特征值
+
+解：求特征值就是要找出所有的$\lambda$ 使得下面的矩阵方程有非平凡解
+
+$(A - \lambda I)x = 0$
+
+根据逆矩阵定理，这个问题等价于找出所有的$\lambda$ ，使得$A - \lambda I$不可逆。通过引入行列式，我们只需要处理一个未知数
+
+$det(A - \lambda I) = det\left(\begin{matrix}2- \lambda&3\\3&-6- \lambda\end{matrix}\right) = (2- \lambda)(-6- \lambda) - 9 = (\lambda - 3)(\lambda + 7) = 0$
+
+故A的特征值为3和-7
+
+#### 行列式
+
+![](./pic/5.2.1.png)
+
+![](./pic/5.2.2.png)
+
+**例5.2.2**：计算 $A = \left(\begin{matrix}1&5&0\\2&4&-1\\0&-2&0\end{matrix}\right)$ 的行列式det A
+
+解：对A施加行变换，使其变为阶梯阵：
+
+$A \sim \left(\begin{matrix}1&5&0\\0&-2&0\\0&0&-1\end{matrix}\right)$
+
+因此$det A = (-1)^1(1)(-2)(-1)=-2$
+
+#### 特征方程
+
+![](./pic/5.2.3.png)
+
+**例5.2.3**：求 $A = \left(\begin{matrix}5&-2&6&-1\\0&3&-8&0\\0&0&5&4\\0&0&0&1\end{matrix}\right)$ 的特征方程
+
+解：用行列式表达特征方程：
+
+$det(A-\lambda I) =det\left(\begin{matrix}5-\lambda&-2&6&-1\\0&3-\lambda&-8&0\\0&0&5-\lambda&4\\0&0&0&1-\lambda\end{matrix}\right) = (5-\lambda)(3-\lambda)(5-\lambda)(1-\lambda） = (5-\lambda)^2(3-\lambda)(1-\lambda) = 0$
+
+![](./pic/5.2.4.png)
+
+**例5.2.4**：某$6\times6$ 矩阵的特征多项式为$\lambda^6-4\lambda^5-12\lambda^4$，求特征值及重数
+
+解：把多项式分解因式：
+
+$\lambda^6-4\lambda^5-12\lambda^4 = \lambda^4(\lambda-6)(\lambda+2)$
+
+可得特征值0（重数为4），6（重数为1）和-2（重数为1）
+
+#### 相似性
+
+![](./pic/5.2.5.png)
+
+![](./pic/5.2.6.png)
+
+### 5.3 对角化
+
+![](./pic/5.3.1.png)
+
+**例5.3.1** ：证明定理5
+
+证明：
+
+先证明若n维方阵A可对角化则A有n个线性无关的特征向量
+
+假设A可对角化，也就是$P = \left(\begin{matrix}v_1& \dots &v_n\end{matrix}\right)$可逆，$D = \left(\begin{matrix}\lambda_1&\dots&0\\\vdots&&\vdots\\0&\dots&\lambda_n\end{matrix}\right)$为对角矩阵，并且$A=PDP^{-1}$。用P右乘等式两边有AP = PD。
+
+下面应该用这个等式得A有n个线性无关的特征向量的结论。由P可逆知，$v_1, \dots, v_n$ 必然线性无关且都不为零向量（否则矩阵有0列，导致行列式为0），再分析矩阵的列
+
+$AP = \left(\begin{matrix}Av_1& \dots &Av_n\end{matrix}\right)$
+
+$PD = \left(\begin{matrix}\lambda_1v_1& \dots &\lambda_nv_n\end{matrix}\right)$
+
+由列相等得
+
+$Av_1 = \lambda_1v_1, \dots, Av_n = \lambda_nv_n$
+
+故$v_1, \dots, v_n$ 是A的特征向量
+
+再证明若n维方阵有n个线性无关的特征向量，则A可对角化
+
+若A有n个线性无关的特征向量，则将这些特征向量以列向量的方式构造矩阵P，并用相应的特征值来构造对角矩阵D，这时显然有AP = PD。因为P的列线性无关，所以P可逆，进而可以推出$A = PDP^{-1}$
+
+#### 矩阵的对角化
+
+**例5.3.3**：可能的话，将矩阵$A = \left(\begin{matrix}1&3&3\\-3&5&-3\\3&3&1\end{matrix}\right)$对角化。即求可逆矩阵P和对角矩阵D，使得$A = PDP^{-1}$
+
+解：
+
+1. 求A的特征值：$0 = det(A-\lambda I) = -(\lambda-1)(\lambda+2)^2$，得到特征值为1和-2
+2. 求A的3个线性无关的特征向量：解$(A-I)x = 0$ 得特征值$\lambda_1=1$的基为$v_1=\left(\begin{matrix}1\\-1\\1\end{matrix}\right)$，解$(A+2I)x = 0$得特征值 $\lambda_2=-2$的基为$v_2=\left(\begin{matrix}-1\\1\\0\end{matrix}\right),v_3=\left(\begin{matrix}-1\\0\\1\end{matrix}\right)$，可以验证$\{v_1, v_2, v_3\}$ 是线性无关的
+3. 构造矩阵P：$P = \left(\begin{matrix}v_1, v_2, v_3\end{matrix}\right) = \left(\begin{matrix}1&-1&-1\\-1&1&0\\1&0&1\end{matrix}\right)$
+4. 用对应的特征值构造矩阵D：$D = \left(\begin{matrix}1&0&0\\0&-2&0\\0&0&-2\end{matrix}\right)$
+
+![](./pic/5.3.2.png)
+
+**例5.3.5**：确定$A = \left(\begin{matrix}5&-8&1\\0&0&7\\0&0&-2\end{matrix}\right)$能否对角化
+
+解：三角矩阵（阶梯矩阵）的特征值就在其对角线上，显然矩阵A有三个相异的特征值5, 0, -2
+
+#### 特征值不是都相异的矩阵
+
+![](./pic/5.3.3.png)
+
+（特征值数小于n但仍能找到n个线性无关的特征向量的情况，见例5.3.3）
+
+### 5.4 特征向量与线性变换
+
+#### 线性变换的矩阵
+
+![](./pic/5.4.1.png)
+
+![](./pic/5.4.2.png)
+
+![](./pic/5.4.3.png)
+
+**例5.4.1**：设$B = \{b_1, b_2\}$ 是V的基，$C = \{c_1, c_2, c_3\}$ 是W的基。T是$V \rightarrow W$ 的线性变换，$T(b_1) = 3c_1-2c_2+5c_3, T(b_2)=4c_1+7c_2-c_3$。求T相对于基B和C的矩阵M。
+
+解：$M = \left(\begin{matrix}[T(b_1)_c] & [T(b_2)]_c\end{matrix}\right) = \left(\begin{matrix}3&4\\-2&7\\5&-1\end{matrix}\right)$
+
+#### V到V的线性变换
+
+![](./pic/5.4.4.png)
+
+**例5.4.2**：$P_2\rightarrow P_2$ 的映射T：$T(a_0, a_1t+a_2t^2)=a_1+2a_2t$ 是线性变换（微分算子）
+
+a. 当基$B = \{1, t, t^2\}$ 时，求T的B-矩阵
+
+b. 对$P_2$ 中的每个p，验证$[T(p)]_B = [T]_B[P]_B$
+
+解：
+
+a.  
 
 ## 6 正交性和最小二乘法
 
