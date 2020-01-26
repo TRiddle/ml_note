@@ -622,7 +622,109 @@ $[T]_B = P^{-1}AP = \left(\begin{matrix}-2&1\\0&-2\end{matrix}\right)$
 
 ## 6 正交性和最小二乘法
 
+### 6.1 内积，长度和正交性
+
+#### 内积
+
+![](./pic/6.1.1.png)
+
+![](./pic/6.1.2.png)
+
+#### 向量的长度
+
+![](./pic/6.1.3.png)
+
+![](./pic/6.1.4.png)
+
+#### $R^n$ 空间中的距离
+
+![](./pic/6.1.5.png)
+
+#### 正交向量
+
+![](./pic/6.1.6.png)
+
+![](./pic/6.1.7.png)
+
+#### $R^2$ 空间和$R^3$ 空间的角度
+
+![](./pic/6.1.8.png)
+
+![](./pic/6.1.9.png)
+
+### 6.2 正交集
+
+![](./pic/6.2.1.png)
+
+![](./pic/6.2.2.png)
+
+![](./pic/6.2.3.png)
+
+![](./pic/6.2.4.png)
+
+**例6.2.2**：$u_1 = \left(\begin{matrix}3\\1\\1\end{matrix}\right), u_2 = \left(\begin{matrix}-1\\2\\1\end{matrix}\right), u_3 = \left(\begin{matrix}-1/2\\-2\\7/2\end{matrix}\right)$，$S = \{u_1, u_2, u_3\}$ 是$R^3$ 中的一个正交基，将向量$y = \left(\begin{matrix}6\\1\\-8\end{matrix}\right)$ 表示称S中向量的线性组合
+
+解：$c_1 = \frac{y\cdot u_1}{u_1\cdot u_1} = 1, c_2 = \frac{y\cdot u_2}{u_2\cdot u_2} = -2, c_3 = \frac{y\cdot u_3}{u_3\cdot u_3} = -2$，根据定理5有$y = u_1-2u_2-2u_3$
+
+#### 正交投影
+
+![](./pic/6.2.5.png)
+
+**例6.2.2**：假设$y = \left(\begin{matrix}7\\6\end{matrix}\right), u = \left(\begin{matrix}4\\2\end{matrix}\right)$，找出y在u上的正交投影，然后将y写成两个正交向量之和，一个在 $Span\{u\}$ 中，另一个与u正交。并且计算y到u所在直线的距离。
+
+解：y在u上的正交投影是
+
+$\hat{y} = \frac{y\cdot u}{u\cdot u} \cdot u =\left(\begin{matrix}8\\4\end{matrix}\right)$ 
+
+y垂直于u的分量为
+
+$z = y - \hat{y} =\left(\begin{matrix}-1\\2\end{matrix}\right)$
+
+y到u所在直线的距离为
+
+$||z|| = \sqrt{5}$ 
+
+#### 单位正交集
+
+![](./pic/6.2.6.png)
+
+![](./pic/6.2.7.png)
+
+![](./pic/6.2.8.png)
+
+![](./pic/6.2.9.png)
+
+**例6.2.6**：若$U = \left(\begin{matrix}1/\sqrt2&2/3\\1/\sqrt2&-2/3\\0&1/3\end{matrix}\right), x = \left(\begin{matrix}\sqrt2\\3\end{matrix}\right)$，注意到U具有单位正交列，且$U^TU=I$ ，验证$\|Ux\|=\|x\|$
+
+解：$Ux = \left(\begin{matrix}3\\-1\\1\end{matrix}\right), \|Ux\| = \sqrt{(Ux)\cdot(Ux)}=\sqrt{11}, \|x\| = \sqrt{x\cdot x}=\sqrt{11}$，故$\|Ux\|=\|x\|$
+
+### 6.3 正交投影
+
+### 6.4 格拉姆-施密特方法
+
+### 6.5 最小二乘问题
+
+### 6.6 线形模型中的应用
+
 ## 7 对称矩阵和二次型
+
+### 7.1 对称矩阵的对角化
+
+![](./pic/7.1.1.png)
+
+![](./pic/7.1.2.png)
+
+![](./pic/7.1.3.png)
+
+**例7.1.3**：$A = \left(\begin{matrix}3&-2&4\\-2&6&2\\4&2&3\end{matrix}\right)$ 的特征方程为$0=-(\lambda-7)^2(\lambda+2)$ ，将其正交对角化。
+
+解：根据特征方程可得特征值：$\lambda_1=7, \lambda_2=-2$
+
+解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right)$
+
+#### 谱定理
+
+#### 谱分解
 
 
 
