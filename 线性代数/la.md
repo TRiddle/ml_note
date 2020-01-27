@@ -700,11 +700,65 @@ $||z|| = \sqrt{5}$
 
 ### 6.3 正交投影
 
+![](./pic/6.3.1.png)
+
+![](./pic/6.3.2.png)
+
+**例6.3.2**：假设$u_1 = \left(\begin{matrix}2\\5\\-1\end{matrix}\right), u_2 = \left(\begin{matrix}-2\\1\\1\end{matrix}\right), y = \left(\begin{matrix}1\\2\\3\end{matrix}\right)$ ，注意到$\{u_1, u_2\}$ 是$W=Span\{u_1, u_2\}$ 的正交基，将y写成属于W的向量与正交于W的向量之和。
+
+解：属于W的向量为$\hat y = \frac{y\cdot u_1}{u_1 \cdot u_1}u_1 + \frac{y\cdot u_2}{u_2 \cdot u_2}u_2 = \frac{3}{10}\left(\begin{matrix}2\\5\\-1\end{matrix}\right) + \frac{1}{2}\left(\begin{matrix}-2\\1\\1\end{matrix}\right) = \left(\begin{matrix}-2/5\\2\\1/5\end{matrix}\right)$
+
+正交于W的向量为：$y - \hat y = \left(\begin{matrix}7/5\\0\\14/5\end{matrix}\right)$
+
+#### 正交投影的性质
+
+![](./pic/6.3.3.png)
+
+![](./pic/6.3.4.png)
+
+**例6.3.3**：如果 $u_1 = \left(\begin{matrix}2\\5\\-1\end{matrix}\right), u_2 = \left(\begin{matrix}-2\\1\\1\end{matrix}\right), y = \left(\begin{matrix}1\\2\\3\end{matrix}\right)$ ，求W中离y最近的点
+
+解：根据最佳逼近定理，最接近y的$\hat y = \frac{y\cdot u_1}{u_1 \cdot u_1}u_1 + \frac{y\cdot u_2}{u_2 \cdot u_2}u_2 = \left(\begin{matrix}-2/5\\2\\1/5\end{matrix}\right)$
+
+![](./pic/6.3.5.png)
+
+![](./pic/6.3.6.png)
+
 ### 6.4 格拉姆-施密特方法
+
+![](./pic/6.4.1.png)
+
+
+
+#### 标准正交基
+
+**例6.4.2**：假设 $x_1 = \left(\begin{matrix}1\\1\\1\\1\end{matrix}\right), x_2 = \left(\begin{matrix}0\\1\\1\\1\end{matrix}\right), x_3=\left(\begin{matrix}0\\0\\1\\1\end{matrix}\right)$ 。已知 $\{x_1, x_2, x_3\}$ 线性无关，且构成$R^4$ 中子空间W的一个基，试构造W的一个正交基。
+
+解：
+
+1. 取$v_1 = x_1$ 和$W_1 = Span\{x_1\}=Span\{v_1\}$ 
+2. 取$v_2$ 为$x_2$ 在$W_1$ 的正交补中的分量，即$v_2=x_2-proj_{W_1}x_2 = x_2-\frac{x_2\cdot v_1}{v_1\cdot v_1}v_1 = \left(\begin{matrix}-3/4\\1/4\\1/4\\1/4\end{matrix}\right), W_2 = Span\{v_1, v_2\}$
+3. （可选）重新度量$v_2$：$v_2' = 4v_2 = \left(\begin{matrix}-3\\1\\1\\1\end{matrix}\right), W_2 = Span\{v_1, v_2'\}$
+4. 取$v_3$ 为$x_3$ 在$W_2$ 的正交补中的分量，即$v_3=x_3-proj_{W_2}x_3 = x_3-\frac{x_3\cdot v_1}{v_1\cdot v_1}v_1 - \frac{x_3\cdot v_2}{v_2\cdot v_2}v_2 = \left(\begin{matrix}0\\-2/3\\1/3\\1/3\end{matrix}\right)$
+5. （可选）重新度量$v_3$ ：$v_3'= 3v_3 =  \left(\begin{matrix}0\\-2\\1\\1\end{matrix}\right)$
+
+$\{v_1, v_2', v_3'\}$ 即W的一个正交基
+
+#### 矩阵的QR分解
+
+![](./pic/6.4.2.png)
+
+**例6.4.4**：证明QR分解定理，并求$\left(\begin{matrix}1&0&0\\1&1&0\\1&1&1\\1&1&1\end{matrix}\right)$的一个QR分解。
+
+
 
 ### 6.5 最小二乘问题
 
 ### 6.6 线形模型中的应用
+
+### 6.7 内积空间
+
+### 6.8 内积空间的应用
 
 ## 7 对称矩阵和二次型
 
@@ -720,7 +774,9 @@ $||z|| = \sqrt{5}$
 
 解：根据特征方程可得特征值：$\lambda_1=7, \lambda_2=-2$
 
-解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right)$
+解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right), v_2=\left(\begin{matrix}-1/2\\1\\0\end{matrix}\right)$
+
+解方程$(A + 2I)x=0$ 得$\lambda_2$ 对应的特征空间的基：$ v_3=\left(\begin{matrix}-1/4\\1\\1/4\end{matrix}\right)$
 
 #### 谱定理
 
