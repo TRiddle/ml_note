@@ -728,7 +728,7 @@ $||z|| = \sqrt{5}$
 
 ![](./pic/6.4.1.png)
 
-
+![](./pic/6.4.4.png)
 
 #### 标准正交基
 
@@ -748,9 +748,37 @@ $\{v_1, v_2', v_3'\}$ 即W的一个正交基
 
 ![](./pic/6.4.2.png)
 
-**例6.4.4**：证明QR分解定理，并求$\left(\begin{matrix}1&0&0\\1&1&0\\1&1&1\\1&1&1\end{matrix}\right)$的一个QR分解。
+![](./pic/6.4.3.png)
 
+**例6.4.4**：证明QR分解定理，并求$A = \left(\begin{matrix}1&0&0\\1&1&0\\1&1&1\\1&1&1\end{matrix}\right)$的一个QR分解。
 
+证明：若A列线性无关，那么A的列向量形成Col A的一个基$\{x_1, \dots, x_n\}$，构造W = Col A的标准正交基$\{u_1, \dots, u_n\}$ ，并取$Q = \left(\begin{matrix}u_1&\cdots&u_n\end{matrix}\right)$。
+
+考虑A的第k个列向量，我们有$x_k$ 属于$Span\{x_1, \cdots, x_k\}$，即属于$Span\{u_1, \cdots, u_k\}$，进而$x_k$ 能被表示为 $\{u_1, \cdots, u_k\}$ 的线性组合（不妨令 $r_{kk} \ge 0$ ，若$r_{kk} < 0$ ，则对$r_{kk}$和$u_k$ 都乘-1，Q的列仍能构成标准正交基）：
+
+$x_k=r_{1k}u_1+\dots+r_{kk}u_k = Q\left(\begin{matrix}r_{1k}&\dots&r_{kk}&0&\dots&0\end{matrix}\right)^T$
+
+设$r_k = \left(\begin{matrix}r_{1k}&\dots&r_{kk}&0&\dots&0\end{matrix}\right)^T$，$R = \left(\begin{matrix}r_1&\cdots&r_n\end{matrix}\right)$，于是对全体$\{x_1, \dots, x_n\}$ 构成的A就有
+
+$A = \left(\begin{matrix}x_1&\cdots&x_n\end{matrix}\right) = Q\left(\begin{matrix}r_{11}\\0\\\vdots\\0\end{matrix}\right) + \dots +Q\left(\begin{matrix}r_{1n}\\r_{2n}\\\vdots\\r_{nn}\end{matrix}\right) = QR$
+
+显然R是上三角矩阵，且根据假设，其主对角线上的元素都是非负数。证明R可逆的方法（Rx = 0等式两侧左乘Q后解的结构不会发生改变吗？）：
+
+![](./pic/6.4.5.png)
+
+既然R可逆，则其主对角线上的元素都是正数（考虑上三角矩阵的行列式）。
+
+解：通过格拉姆-施密特方法可得矩阵A的正交基为
+
+$v_1 = \left(\begin{matrix}1\\1\\1\\1\end{matrix}\right), v_2 = \left(\begin{matrix}-3\\1\\1\\1\end{matrix}\right), v_3=\left(\begin{matrix}0\\-2\\1\\1\end{matrix}\right)$
+
+将这三个向量单位化得到$u_1, u_2, u_3$ ，且用这些向量组成Q的列
+
+$Q = \left(\begin{matrix}1/2&-3/\sqrt 12&0\\1/2&1/\sqrt 12&-2/\sqrt 6\\1/2&1/\sqrt 12&1/\sqrt 6\\1/2&1/\sqrt 12&1/\sqrt 6\end{matrix}\right)$
+
+根据定理12，$A=QR$，Q又是单位矩阵，那么$Q^TQ=I$，进而有
+
+$R=Q^TA = \left(\begin{matrix}2&3/2&1\\0&3/\sqrt 12&2/\sqrt{12}\\0&0&2/\sqrt 6\end{matrix}\right)$
 
 ### 6.5 最小二乘问题
 
@@ -774,13 +802,127 @@ $\{v_1, v_2', v_3'\}$ 即W的一个正交基
 
 解：根据特征方程可得特征值：$\lambda_1=7, \lambda_2=-2$
 
-解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right), v_2=\left(\begin{matrix}-1/2\\1\\0\end{matrix}\right)$
+解方程$(A - 7I)x=0$ 得$\lambda_1$ 对应的特征空间的基：$v_1=\left(\begin{matrix}1\\0\\1\end{matrix}\right), v_2=\left(\begin{matrix}-1/2\\1\\0\end{matrix}\right)$，进而得到特征空间的单位正交基：$u_1=\left(\begin{matrix}1/\sqrt 2\\0\\1/\sqrt 2\end{matrix}\right), u_2=\left(\begin{matrix}-1/\sqrt{18}\\4/\sqrt{18}\\1/\sqrt{18}\end{matrix}\right)$
 
-解方程$(A + 2I)x=0$ 得$\lambda_2$ 对应的特征空间的基：$ v_3=\left(\begin{matrix}-1/4\\1\\1/4\end{matrix}\right)$
+解方程$(A + 2I)x=0$ 得$\lambda_2$ 对应的特征空间的基：$ v_3=\left(\begin{matrix}-1/4\\1\\1/4\end{matrix}\right)$，进而得到特征空间的单位正交基：$u_3=\left(\begin{matrix}-2/3\\-1/3\\2/3\end{matrix}\right)$
 
-#### 谱定理
+根据定理1，$u_3$ 与$u_1, u_2$ 正交，即$\{u_1, u_2, u_3\}$ 为单位正交基。令
+
+$P = \left(\begin{matrix}u_1&u_2&u_3\end{matrix}\right) =\left(\begin{matrix}1/\sqrt 2&-1/\sqrt{18}&-2/3\\0&4/\sqrt{18}&-1/3\\1/\sqrt 2&1/\sqrt{18}&2/3\end{matrix}\right), D=\left(\begin{matrix}7&0&0\\0&7&0\\0&0&-2\end{matrix}\right)$
+
+可得正交对角化结果：$A=PDP^{-1}$
 
 #### 谱分解
+
+![](./pic/7.1.4.png)
+
+![](./pic/7.1.5.png)
+
+**例7.1.4**：构造矩阵A的一个谱分解，已知A有以下正交对角化分解
+
+$A = \left(\begin{matrix}7&2\\2&4\end{matrix}\right) =\left(\begin{matrix}2/\sqrt{5}&-1/\sqrt{5}\\1/\sqrt{5} &2/\sqrt{5}\end{matrix}\right)\left(\begin{matrix}8&0\\0&3\end{matrix}\right)\left(\begin{matrix}2/\sqrt{5}&1/\sqrt{5}\\-1/\sqrt{5} &2/\sqrt{5}\end{matrix}\right)$
+
+解：将P的列记为$u_1, u_2$，则有谱分解：
+
+$A = 8u_1u_1^T+3u_2u_2^T = \left(\begin{matrix}32/5&16/5\\16/5&8/5\end{matrix}\right) + \left(\begin{matrix}3/5&-6/5\\-65&12/5\end{matrix}\right)$
+
+### 7.2 二次型
+
+![](./pic/7.2.1.png)
+
+**例7.2.2**：对属于$R^3$ 的x，取$Q(x)=5x_1^2+3x_2^2+2x_3^2-x_1x_2+8x_2x_3$，写出其$x^TAx$ 形式的二次型。
+
+解：显然，$x_1^2, x_2^2, x_3^2$ 的系数在A的主对角线上，$x_1x_2$ 的系数要平分到$A_{12}, A_{21}$ 中去，$x_2x_3$ 的系数要平分到$A_{23}, A_{32}$ 中去。因此
+
+$Q(x) = x^TAx = \left(\begin{matrix}x_1&x_2&x_3\end{matrix}\right) \left(\begin{matrix}5&1/2&0\\-1/2&3&4\\0&4&2\end{matrix}\right) \left(\begin{matrix}x_1\\x_2\\x_3\end{matrix}\right)$
+
+#### 二次型的变量代换
+
+![](./pic/7.2.2.png)
+
+**例7.2.4**：对属于$R^3$ 的x，取$Q(x)=x_1^2-8x_1x_2-5x_2^2$，求一个变量代换将其变为一个没有交叉项的二次型。
+
+解：先将二次型矩阵求出来：
+
+$A = \left(\begin{matrix}1&-4\\-4&5\end{matrix}\right)$
+
+再将矩阵A正交对角化：
+
+$P = \left(\begin{matrix}2/\sqrt{5}&1/\sqrt{5}\\-1\sqrt{5}&2\sqrt{5}\end{matrix}\right), D = \left(\begin{matrix}3&0\\0&-7\end{matrix}\right)$
+
+一个适当的变换是$y=P^{-1}x$使得$x^TAx=y^TDy$
+
+当x取(2, -2)时，两个二次型都会得到16
+
+![](./pic/7.2.3.png)
+
+![](./pic/7.2.4.png)
+
+#### 主轴的几何意义
+
+![](./pic/7.2.5.png)
+
+**例7.2.5**：有椭圆方程$5x_1^2-4x_1x_2+5x_2^2=48$ ，求该椭圆的主轴。
+
+解：二次型对应的矩阵为$A = \left(\begin{matrix}5&-2\\-2&5\end{matrix}\right)$ ，可以得到其单位特征向量$u_1 = \left(\begin{matrix}1/\sqrt{2}\\1/\sqrt{2}\end{matrix}\right), u_2=\left(\begin{matrix}-1/\sqrt{2}\\1/\sqrt{2}\end{matrix}\right)$，这便是椭圆的主轴
+
+#### 二次型的分类
+
+![](./pic/7.2.6.png)
+
+![](./pic/7.2.7.png)
+
+### 7.3 条件优化
+
+![](./pic/7.3.1.png)
+
+![](./pic/7.3.2.png)
+
+![](./pic/7.3.3.png)
+
+**例7.3.3**：令$A = \left(\begin{matrix}3&2&1\\2&3&1\\1&1&4\end{matrix}\right)$，求二次型$x^TAx$ 在限制条件$x^Tx=1$ 下的最大值，以及一个可以取到该最大值的单位向量
+
+解：根据定理6，最大值为A的最大特征值，求出A的特征多项式：
+
+$0=-(\lambda-6)(\lambda-3)(\lambda-1)$
+
+因此最大的特征值为$\lambda_1=6$，解$(A-6I)x=0$ 可得单位特征向量$u_1=\left(\begin{matrix}1/\sqrt{3}\\1/\sqrt{3}\\1/\sqrt{3}\end{matrix}\right)$ 
+
+故二次型在$u_1$ 处可以取得最大值$\lambda_1$
+
+![](./pic/7.3.4.png)
+
+**例7.3.5**：令$A = \left(\begin{matrix}3&2&1\\2&3&1\\1&1&4\end{matrix}\right)$，已知$u_1$ 为A的最大特征值的特征向量，求二次型$x^TAx$ 在限制条件$x^Tx=1, x^Tu_1=0$ 下的最大值，以及一个可以取到该最大值
+
+解：求出A的特征多项式：
+
+$0=-(\lambda-6)(\lambda-3)(\lambda-1)$
+
+根据定理7，所求最大值为第二大的特征值3
+
+![](./pic/7.3.5.png)
+
+**例7.3.6**：县政府计划在下一年度修建x百公里的公路和桥梁，并且修正y百英亩的公园和娱乐产所。其中x, y必须满足的限制条件为$4x^2+9y^2\le36$ 。令效用函数q(x, y) = xy（xy=c曲线又被称为无差别曲线，每个c代表一种价值观），求一个公共工作计划(x, y) 使得效用函数最大。
+
+解：先想办法将不等式限制条件话为等式限制条件。显然，对于效用函数而言，在限制条件的边界上取值能使资源利用达到最大可能。也就是：
+
+$4x^2+9y^2=36$
+
+![](./pic/7.3.6.png)
+
+虽然现在得到了等式限制，但(x, y)没有单位向量的意思，于是考虑用变量代换。重写限制条件如下：
+
+$(\frac{x}{3})^2+(\frac{y}{2})^2=1$
+
+再做换元$x=3x_1, y=2x_2$，于是问题就被转化为在$x^Tx=1$ 的条件下求 $Q(x)=6x_1x_2$ 的最大值，若将二次型写成$Q(x)=x^TAx$ 的形式，不难得出：
+
+$A = \left(\begin{matrix}0&3\\3&0\end{matrix}\right)$
+
+同样不能得出A的最大特征值为3，对应的特征向量为$u_1 = \left(\begin{matrix}1/\sqrt{2}\\1/\sqrt{2}\end{matrix}\right)$，所以效用函数的最大值3可以在$x_1=1/\sqrt{2}, x_2=1/\sqrt{2}$ 处得到，也就是在$x=3/\sqrt{2}, y=2/\sqrt{2}$ 处得到。
+
+### 7.4 奇异值分解
+
+**例7.4.1**：若$A = \left(\begin{matrix}4&11&14\\8&7&-2\end{matrix}\right)$ ，那么线性变换$x\mapsto Ax$将$R^3$ 中的单位球
 
 
 
