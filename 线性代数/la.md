@@ -922,7 +922,58 @@ $A = \left(\begin{matrix}0&3\\3&0\end{matrix}\right)$
 
 ### 7.4 奇异值分解
 
-**例7.4.1**：若$A = \left(\begin{matrix}4&11&14\\8&7&-2\end{matrix}\right)$ ，那么线性变换$x\mapsto Ax$将$R^3$ 中的单位球
+![](./pic/7.4.1.png)
+
+**例7.4.1**：若$A = \left(\begin{matrix}4&11&14\\8&7&-2\end{matrix}\right)$ ，那么线性变换$x\mapsto Ax$将$R^3$ 中的单位球$\{x:\|x\|=1\}$ 映射为$R^2$ 的椭圆，找出使得$\|Ax\|$最大的一个单位向量x，并且计算这个最大长度。
+
+![](./pic/7.4.2.png)
+
+解：优化$\|Ax\|$同优化$\|Ax\|^2$ 是一样的，所以我们有话更容易优化的后者，先对其做变换：
+
+$\|Ax\|^2 = (Ax)^TAx = x^TA^TAx$
+
+显然，$A^TA$ 是个对称矩阵，因此问题转化为，在$x^Tx=1$ 的限制下，最大化二次型$x^TA^TAx$，首先计算
+
+$A^TA = \left(\begin{matrix}80&100&40\\100&170&140\\40&140&200\end{matrix}\right)$
+
+这个矩阵最大的特征值为$\lambda_1=360$，对应的单位特征向量为：$v_1 = \left(\begin{matrix}1/3&2/3&2/3\end{matrix}\right)^T$，因此使得$\|Ax\|^2$ 最大的单位向量为$v_1$，最大值为360。
+
+![](./pic/7.4.3.png)
+
+#### $m\times n$ 矩阵的奇异值
+
+![](./pic/7.4.4.png)
+
+**例7.4.2**：若$A = \left(\begin{matrix}4&11&14\\8&7&-2\end{matrix}\right)$ ，求A的奇异值
+
+解：由于$A^TA$ 的特征值为$\lambda_1=360, \lambda_2=90, \lambda_3=0$，所以A的奇异值为$\sigma_1=6\sqrt{10}, \sigma_2=3\sqrt{10}, \sigma_3=0$。
+
+![](./pic/7.4.5.png)
+
+![](./pic/7.4.6.png)
+
+![](./pic/7.4.7.png)
+
+**例7.4.3**：证明定理9
+
+证明：要证明$\{Av_1, \dots, Av_n\}$ 是正交基，就要证明当$i\ne j$ 时$(Av_i)^T(Av_j)=0$。将其变形：
+
+$(Av_i)^T(Av_j)=v_i^TA^TAv_j$
+
+因为$v_j$对应$A^TA$的一个特征向量，所以
+
+$(Av_i)^T(Av_j)=v_i^TA^TAv_j=v_i^T\lambda_jv_j$
+
+因为$\{v_1, \dots, v_n\}$是$A^TA$ 的单位正交基，所以
+
+$(Av_i)^T(Av_j)=v_i^T\lambda_jv_j = 0$
+
+$\{Av_1, \dots, Av_n\}$ 是正交基得证。
 
 
 
+#### 奇异值分解
+
+![](./pic/7.4.8.png)
+
+![](./pic/7.4.9.png)
