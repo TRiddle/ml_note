@@ -315,6 +315,8 @@ $A = \left(\begin{matrix}6&-1\\1&1\\-7&0\end{matrix}\right)$
 
 ### 4.3 线性无关集和基
 
+![](./pic/4.3.7.png)
+
 ![](./pic/4.3.1.png)
 
 **例4.3.1**：$p_1(t)=1,p_2(t)=t,p_3(t)=4-t$ ，证明$\{p_1,p_2,p_3\}$ 线性相关。
@@ -447,7 +449,43 @@ $\left(\begin{matrix}1&-2&2&3&-1&0\\0&0&1&2&-2&0\\0&0&0&0&0&0\end{matrix}\right)
 
 #### 行空间
 
+![](./pic/4.6.1.png)
+
+**例4.5.3**：求A的零空间和列空间的基
+
+$A = \left(\begin{matrix}-2&-5&8&0&-17\\1&3&-5&1&5\\3&11&-19&7&1\\1&7&-13&5&-3\end{matrix}\right)$ 
+
+解：将A行化简成阶梯型
+
+$A \sim B = \left(\begin{matrix}1&3&-5&1&5\\0&1&-2&2&-7\\0&0&0&-4&20\\0&0&0&0&0\end{matrix}\right)$ 
+
+通过B的非零行得到Row A的基
+
+$\{\left(\begin{matrix}1&3&-5&1&5\end{matrix}\right), \left(\begin{matrix}0&1&-2&2&-7\end{matrix}\right), \left(\begin{matrix}0&0&0&-4&20\end{matrix}\right)\}$
+
+ 通过观察B，可知主元列为1，2，4列，从而A的第1，2，4列构成Col A的一个基
+
+$\{\left(\begin{matrix}-2\\1\\3\\1\end{matrix}\right), \left(\begin{matrix}-5\\3\\11\\7\end{matrix}\right), \left(\begin{matrix}0\\1\\7\\5\end{matrix}\right)\}$
+
+将B进一步行化简成简化阶梯形
+
+$B \sim C = \left(\begin{matrix}1&0&1&0&1\\0&1&-2&0&3\\0&0&0&1&-5\\0&0&0&0&0\end{matrix}\right)$ 
+
+解方程Cx = 0得
+
+$x = x_2\left(\begin{matrix}-1\\2\\1\\0\\0\end{matrix}\right)+x_5 \left(\begin{matrix}-1\\-3\\0\\5\\1\end{matrix}\right)$
+
+因此得到Nul A的基
+
+$\{\left(\begin{matrix}-1\\2\\1\\0\\0\end{matrix}\right),  \left(\begin{matrix}-1\\-3\\0\\5\\1\end{matrix}\right)\}$
+
+![](./pic/4.6.2.png)
+
 #### 秩定理
+
+![](./pic/4.6.3.png)
+
+![](./pic/4.6.4.png)
 
 ### 4.7 基的变换
 
@@ -1078,7 +1116,11 @@ $A^TA = \left(\begin{matrix}80&100&40\\100&170&140\\40&140&200\end{matrix}\right
 
 **例7.4.3**：证明定理9
 
-证明：要证明$\{Av_1, \dots, Av_n\}$ 是正交基，就要证明当$i\ne j$ 时$(Av_i)^T(Av_j)=0$。将其变形：
+证明：
+
+首先，要证明$\{Av_1, \dots, Av_n\}$ 中的元素两两正交，就要证明当$i\ne j$ 时$(Av_i)^T(Av_j)=0$。
+
+将其变形：
 
 $(Av_i)^T(Av_j)=v_i^TA^TAv_j$
 
@@ -1090,12 +1132,124 @@ $(Av_i)^T(Av_j)=v_i^TA^TAv_j=v_i^T\lambda_jv_j$
 
 $(Av_i)^T(Av_j)=v_i^T\lambda_jv_j = 0$
 
-$\{Av_1, \dots, Av_n\}$ 是正交基得证。
+$\{Av_1, \dots, Av_n\}$ 中的元素两两正交得证。
 
+其次，要证明$Col A = Span\{Av_1, \dots, Av_r\}$，就要证明$\{Av_1, \dots, Av_r\}$ 线性无关且在Col A中，并且任意Col A中的向量y都在$Span\{Av_1, \dots, Av_r\}$ 中：
 
+1. 证明$\{Av_1, \dots, Av_r\}$ 是线性无关集：$\{Av_1, \dots, Av_n\}$ 中的元素两两正交，因此只要证明$\{Av_1, \dots, Av_r\}$ 中没有零向量即可。 $\{Av_1, \dots, Av_n\}$ 中元素的长度是A对应的奇异值，根据A的奇异值与$A^TA$ 的特征值的关系，A的前r各奇异值非零，即$\{Av_1, \dots, Av_r\}$ 的长度不为0
+2. 证明$\{Av_1, \dots, Av_r\}$ 中所有元素都在Col A中：显然，对任意向量x，Ax的结果是A的列向量的线性组合，必然在Col A中
+3. 证明任意Col A中的向量y都在$Span\{Av_1, \dots, Av_r\}$ 中：因为y在Col A中，所以$y = Ax = c_1Av_1+\dotsc_rAv_r+0\dots+0$，该式表示y都在$Span\{Av_1, \dots, Av_r\}$ 中
+
+$Col A = Span\{Av_1, \dots, Av_r\}$得证。根据这个等式和秩的定义，rank A = dim(Col A) = r。
 
 #### 奇异值分解
 
 ![](./pic/7.4.8.png)
 
 ![](./pic/7.4.9.png)
+
+**例7.4.4**：证明定理10
+
+证明：
+
+设A为有r个非零奇异值的矩阵，$\{\lambda_1, \dots, \lambda_n\}$ 为$A^TA$ 的满足$\forall i\in[1, n),\ \lambda_i>\lambda_{i+1}$ 的特征值。 $\{v_1, \dots, v_n\}$ 为满足$\forall i \in [1, n]$，$v_i$ 在$\lambda_i$的特征空间中的单位正交基。根据定理9， $\{Av_1, \dots, Av_r\}$ 为Col A的正交基。将其按照
+
+$u_i = \frac{1}{\|Av_i\|}Av_i = \frac{1}{\sigma_i}Av_i$
+
+单位化可以得到Col A的标准正交基$\{u_1, \dots, v_r\}$，且满足
+
+$Av_i=\sigma_iu_i, (1\le i\le r) \tag{4}$
+
+现在将$\{u_1, \dots, u_r\}$ 扩充为$R^m$ 的单位正交基$\{u_1, \dots, u_m\}$ 而且构造正交矩阵
+
+$U = \left(\begin{matrix}u_1& \dots u_m\end{matrix}\right), V = \left(\begin{matrix}v_1& \dots v_n\end{matrix}\right)$
+
+按照$A^TA$特征值的顺序，前r个奇异值非零，后n-r个奇异值为0。因为$Av_i$的长度为$\sigma_i$ ，所以$Av_i = 0,\ \forall i > r$ 成立。根据(4)有：
+
+$AV  = \left(\begin{matrix}Av_1& \dots Av_r&0&\dots&0\end{matrix}\right) = \left(\begin{matrix}\sigma_1u_1& \dots \sigma_ru_r&0&\dots&0\end{matrix}\right)$
+
+$ = \left(\begin{matrix}u_1&\dots u_m\end{matrix}\right) \left(\begin{array}{c|c}\begin{matrix}\sigma_1&&0\\&\ddots&\\0&&\sigma_r\end{matrix}&0\\\hline0&0\end{array}\right) = U\Sigma$
+
+因为V是一个正交矩阵，所以
+
+$A=U\Sigma V^T$
+
+**例7.4.5**：求$A = \left(\begin{matrix}4&11&14\\8&7&-2\end{matrix}\right)$ 的一个奇异值分解
+
+解：
+
+按照下列步骤构造奇异值分解所需的各个元素
+
+1. 将$A^TA$ 正交对角化（求特征值和对应特征空间的标准正交基即可）：$A^TA = \left(\begin{matrix}80&100&40\\100&170&140\\40&140&200\end{matrix}\right)$，求出特征值及其对应的特征向量：
+   - $\lambda_1=360$对应的单位特征向量：$v_1 = \left(\begin{matrix}1/3&2/3&2/3\end{matrix}\right)^T$ 
+   - $\lambda_2=90$对应的单位特征向量：$v_2 = \left(\begin{matrix}-2/3&-1/3&2/3\end{matrix}\right)^T$
+   -  $\lambda_3=0$对应的单位特征向量：$v_3 = \left(\begin{matrix}2/3&-2/3&1/3\end{matrix}\right)^T$ 
+2. 构造V和$\Sigma$ ：
+   - $V = \left(\begin{matrix}v_1&v_2&v_3 \end{matrix}\right) = \left(\begin{matrix}1/3&-2/3&2/3\\2/3&-1/3&-2/3\\2/3&2/3&1/3\end{matrix}\right)$
+   - $D=\left(\begin{matrix}\sqrt{\lambda_1}&0\\0&\sqrt{\lambda_2}\end{matrix}\right)$
+   - $\Sigma=\left(\begin{matrix}D&0\end{matrix}\right) = \left(\begin{matrix}6\sqrt{10}&0&0\\0&3\sqrt{10}&0\end{matrix}\right)$ 
+3. 构造U（当rank A=2时，U的前r列是从$Av_1, \dots,  Av_r$计算得到的单位向量）：
+   - $u_1 = \frac{1}{\|Av_1\|}Av_1=\frac{1}{\sigma_1}Av_1 = \left(\begin{matrix}3/\sqrt{10}&1/\sqrt{10}\end{matrix}\right)^T$
+   - $u_2 = \frac{1}{\|Av_2\|}Av_2=\frac{1}{\sigma_2}Av_2 = \left(\begin{matrix}1/\sqrt{10}&-3/\sqrt{10}\end{matrix}\right)^T$
+   - $U = \left(\begin{matrix}u_1&u_2 \end{matrix}\right) = \left(\begin{matrix}3/\sqrt{10}&1/\sqrt{10}\\1/\sqrt{10}&-3/\sqrt{10}\end{matrix}\right)$
+
+从而我们得到一个奇异值分解：
+
+$A = \left(\begin{matrix}3/\sqrt{10}&1/\sqrt{10}\\1/\sqrt{10}&-3/\sqrt{10}\end{matrix}\right) \left(\begin{matrix}6\sqrt{10}&0&0\\0&3\sqrt{10}&0\end{matrix}\right) \left(\begin{matrix}1/3&-2/3&2/3\\2/3&-1/3&-2/3\\2/3&2/3&1/3\end{matrix}\right)^T$
+
+#### 奇异值分解的应用
+
+![](./pic/7.4.10.png)
+
+### 7.5 图像处理和统计学中的应用
+
+![](./pic/7.5.1.png)
+
+![](./pic/7.5.2.png)
+
+#### 均值和协方差
+
+![](./pic/7.5.3.png)
+
+**例7.5.3**：从总体中随机取出4个样本做3次测量，每个样本的观测向量为：
+
+$X_1 = \left(\begin{matrix}1\\2\\1\end{matrix}\right), X_2 = \left(\begin{matrix}4\\2\\13\end{matrix}\right), X_3=\left(\begin{matrix}7\\8\\1\end{matrix}\right), X_4=\left(\begin{matrix}8\\4\\5\end{matrix}\right)$
+
+计算样本均值和协方差矩阵。
+
+解：样本均值为
+
+$M = \frac{1}{4}(\left(\begin{matrix}1\\2\\1\end{matrix}\right) + \left(\begin{matrix}4\\2\\13\end{matrix}\right) +\left(\begin{matrix}7\\8\\1\end{matrix}\right) +\left(\begin{matrix}8\\4\\5\end{matrix}\right)) = \left(\begin{matrix}5\\4\\5\end{matrix}\right)$
+
+从$X_1, \dots, X_4$ 中减去样本均值，可得
+
+$\hat{X_1}=\left(\begin{matrix}-4\\-2\\-4\end{matrix}\right), \hat{X_2}=\left(\begin{matrix}-1\\-2\\8\end{matrix}\right), \hat{X_3}=\left(\begin{matrix}2\\4\\-4\end{matrix}\right), \hat{X_4}=\left(\begin{matrix}3\\0\\0\end{matrix}\right)$
+
+并且构造
+
+$B=\left(\begin{matrix}-4&-1&2&3\\-2&-2&4&0\\-4&8&4&0\end{matrix}\right)$
+
+样本协方差矩阵为
+
+$S = \frac{1}{3}BB^T = \left(\begin{matrix}10&6&0\\6&8&-8\\0&-8&32\end{matrix}\right)$
+
+![](./pic/7.5.4.png)
+
+#### 主成分分析
+
+![](./pic/7.5.5.png)
+
+![](./pic/7.5.6.png)
+
+![](./pic/7.5.7.png)
+
+![](./pic/7.5.8.png)
+
+![](./pic/7.5.9.png)
+
+#### 多维数据的降噪
+
+![](./pic/7.5.10.png)
+
+![](./pic/7.5.11.png)
+
